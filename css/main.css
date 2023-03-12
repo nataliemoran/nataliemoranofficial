@@ -610,13 +610,10 @@ ul.list-default li {
 	 Teams
 -------------------------------------------------------------------------------*/
 .person {
-	max-width: 270px;
 	margin: auto;
 	text-align: center;
 }
 .person img {
-	width: 150px;
-	height: 150px;
 	margin: auto;
 	border-radius: 5%;
 	border: 2px solid #ffffff;
@@ -646,11 +643,11 @@ ul.list-default li {
 	color: #e7185c;
 	display: block;
 	font-size: 14px;
-	height: 32px;
+	height: 50px;
 	line-height: 32px;
 	margin-right: 5px;
 	text-align: center;
-	width: 32px;
+	width: 50px;
 }
 .social-icons a:hover {
 	background-color: #e7185c;
