@@ -867,4 +867,7 @@ ul.list-default li {
   .banner-text h1 {
     margin-top: 50%;
   }
+  .reveal-modal {
+    width: 90%;
+   }
 }
