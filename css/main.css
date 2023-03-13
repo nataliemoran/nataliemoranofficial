@@ -869,5 +869,6 @@ ul.list-default li {
   }
   .reveal-modal {
     width: 90%;
+    height: 60%;
    }
 }
