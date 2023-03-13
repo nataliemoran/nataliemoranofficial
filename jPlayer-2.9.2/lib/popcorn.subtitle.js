@@ -34,29 +34,6 @@
         return ctxContainer;
       };
 
-  /**
-   * Subtitle popcorn plug-in
-   * Displays a subtitle over the video, or in the target div
-   * Options parameter will need a start, and end.
-   * Optional parameters are target and text.
-   * Start is the time that you want this plug-in to execute
-   * End is the time that you want this plug-in to stop executing
-   * Target is the id of the document element that the content is
-   *  appended to, this target element must exist on the DOM
-   * Text is the text of the subtitle you want to display.
-   *
-   * @param {Object} options
-   *
-   * Example:
-     var p = Popcorn('#video')
-        .subtitle({
-          start:            5,                 // seconds, mandatory
-          end:              15,                // seconds, mandatory
-          text:             'Hellow world',    // optional
-          target:           'subtitlediv',     // optional
-        } )
-   *
-   */
 
   Popcorn.plugin( "subtitle" , {
 
@@ -113,22 +90,12 @@
           options.innerContainer.innerHTML = options.text || "";
         };
       },
-      /**
-       * @member subtitle
-       * The start function will be executed when the currentTime
-       * of the video  reaches the start time provided by the
-       * options variable
-       */
+
       start: function( event, options ){
         options.innerContainer.style.display = "inline";
         options.showSubtitle( options, options.text );
       },
-      /**
-       * @member subtitle
-       * The end function will be executed when the currentTime
-       * of the video  reaches the end time provided by the
-       * options variable
-       */
+
       end: function( event, options ) {
         options.innerContainer.style.display = "none";
         options.innerContainer.innerHTML = "";

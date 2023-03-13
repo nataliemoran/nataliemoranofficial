@@ -27,8 +27,6 @@ var MP3Decoder = AV.Decoder.extend(function() {
         var frame = this.frame;
         var synth = this.synth;
 
-        // if we just seeked, we may start getting errors involving the frame reservoir,
-        // so keep going until we successfully decode a frame
         if (this.seeking) {
             while (true) {
                 try {
@@ -7701,6 +7699,3 @@ exports.makeArray = function(lengths, Type) {
 };
 
 },{}]},{},[1])
-
-
-//# sourceMappingURL=mp3.js.map

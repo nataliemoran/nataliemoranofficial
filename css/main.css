@@ -96,9 +96,7 @@ ul li {
 .space {
 	margin-top: 60px;
 }
-/* ------------------------------------------------------------------------------
-	Header
--------------------------------------------------------------------------------*/
+
 #header {
 	position: fixed;
 	width: 100%;
@@ -125,7 +123,6 @@ ul li {
 	text-decoration:none;
 	text-transform:uppercase;
 	letter-spacing:2px;
-	/* background: #cd003a; */
 	position: absolute;
 	top: 0px;
 	bottom: 0px;
@@ -322,9 +319,6 @@ ul li {
 	-webkit-transform: translateY(0) rotate(-45deg);
 	transform: translateY(0) rotate(-45deg);
 }
-/* ------------------------------------------------------------------------------
-	Banner
--------------------------------------------------------------------------------*/
 
 .banner {
 	background-image: url(../images/WebsiteBanner2.png);
@@ -362,9 +356,7 @@ ul li {
 	margin-bottom: 0;
 	text-align: left;
 }
-/* ==========================================================================
-	$intro
-========================================================================== */
+
 .intro {
 	background-color: #000;
 	/* color: #000; */
@@ -381,9 +373,7 @@ ul li {
 	font-weight: 400;
 	font-size: 15px;
 }
-/* -----------------------------------------------------------------------------
-Common Styles
-------------------------------------------------------------------------------- */
+
 .section-header{	
 text-align: center;	
 padding-bottom: 30px;
@@ -398,16 +388,11 @@ font-weight: bold;
 	
 }
 
-
-/* ------------------------------------------------------------------------------
-	 Serives
--------------------------------------------------------------------------------*/
 .service-section {
 	padding: 100px 0;
 	color: #fff;
 }
 .services {
-	/* margin-bottom: 110px; */
 	background: #673ab7;
 	color: #fff;
 }
@@ -420,10 +405,8 @@ color: #fff;
 }
 .services-content {
 	padding: 30px 30px 20px;
-	/* margin-top: 30px; */
 	background: #00000033;
 	border: 1px solid rgba(255, 255, 255, 0.53);
-	/* border-radius: 10px; */
 	text-align: center;
 	color: #fff;
 }
@@ -436,25 +419,17 @@ color: #fff;
 	font-size: 50px;
 	padding-top: 26px;
 	display: inline-block;
-	/* background: #ffffff; */
-	/* padding: 20px; */
 	border-radius: 50%;
 	height: 90px;
 	width: 90px;
-	/* border: 1px solid #dedede; */
 	font-weight: 600;
 	margin-bottom: 15px;
 }
 #Playlist{
 	padding:100px 0;
 }
-/* ------------------------------------------------------------------------------
-	 gallery
--------------------------------------------------------------------------------*/
 .work {
 	-moz-box-shadow: 0 0 0 1px #fff;
-	/* -webkit-box-shadow: 0 0 0 1px #fff; */
-	/* box-shadow: 0 0 0 1px #fff; */
 	overflow: hidden;
 	position: relative;
 }
@@ -462,31 +437,7 @@ color: #fff;
 	width: 100%;
 	height: 100%;
 }
-/*
-.work .overlay {
-	background: rgba(194, 6, 14, 0.61);
-	height: 100%;
-	left: 0;
-	opacity: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	-moz-transition: opacity, 0.3s;
-	-o-transition: opacity, 0.3s;
-	-webkit-transition: opacity, 0.3s;
-	transition: opacity, 0.3s;
-}
-.work .overlay-caption {
-	position: absolute;
-	text-align: center;
-	top: 50%;
-	width: 100%;
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
-}
-*/
+
 .work h5, .work p, .work img {
 	-moz-transition: all, 0.5s;
 	-o-transition: all, 0.5s;
@@ -530,9 +481,7 @@ color: #fff;
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 }
-/* ------------------------------------------------------------------------------
-	 package
--------------------------------------------------------------------------------*/
+
 .packageList {
 	padding: 100px 0;
 }
@@ -541,7 +490,6 @@ h5 {
     font-weight: 500;
     margin: 0.3em 0;
     text-transform: capitalize;
-    /* text-align: left; */
     color: #fff;
     font-weight: bold;
     margin-bottom: 18px;
@@ -556,14 +504,12 @@ ul.list-default li {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 .package {
-	/* border: 1px solid rgba(0, 0, 0, 0.1) !important; */
 	position: relative;
 	border-style: none none solid none !important;
 	padding: 1em 0 0.5em;
 	padding: 15px;
 	border: 1px dashed #404040 !important;
 	margin-bottom: 20px;
-	/* border-radius: 15px; */
 	background: #010101;
 }
 .package:hover {
@@ -606,9 +552,6 @@ ul.list-default li {
 	font-size: 0.7em;
 	margin-right: 3px;
 }
-/* ------------------------------------------------------------------------------
-	 Teams
--------------------------------------------------------------------------------*/
 .person {
 	margin: auto;
 	text-align: center;
@@ -654,9 +597,6 @@ ul.list-default li {
 	border-color: #e7185c;
 	color: #fff;
 }
-/* ------------------------------------------------------------------------------
-	 Testimonials
--------------------------------------------------------------------------------*/
 .testimonials {
 	background-color: #cd003a;
 	position: relative;
@@ -789,9 +729,6 @@ ul.list-default li {
 	border-radius: 4px;
 }
 
-/* ------------------------------------------------------------------------------
-	Contact form
--------------------------------------------------------------------------------*/
 .conForm {
 	text-align: center;
 }
@@ -864,9 +801,6 @@ ul.list-default li {
 	font-weight: 700;
 }
 
-/* ------------------------------------------------------------------------------
-	 Footer
--------------------------------------------------------------------------------*/
 .footer {
 	text-align: left;
 }

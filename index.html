@@ -21,6 +21,36 @@
 <link rel="stylesheet" href="css/font-icon.css">
 <link rel="stylesheet" href="css/animate.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<style>
+#form-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    visibility:hidden;
+    display:none;
+    background-color: rgba(22,22,22,0.5);
+}
+
+#form-container:target {
+    visibility: visible;
+    display: block;
+}
+.reveal-modal {
+    background:black; 
+    margin: 0 auto;
+    width:50%; 
+    height: 50%;
+    position:relative; 
+    z-index:41;
+    top: 25%;
+    padding:30px; 
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.4);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.4); 
+    box-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+</style>
+
 </head>
 
 <body>
@@ -194,36 +224,52 @@
                     	<img src="images/item1.jpg" style="width: 30%;" />
                     </ul>
                     <strong class="price"><small></small>On Request</strong>
-                </div><!-- end package -->
-                
-                <div class="package no-border wow fadeInLeft animated" data-wow-offset="150" data-wow-delay="400m" >
+                    <br>
+                    <div class="tour-ticket" style="margin-left: 0px;"><a href="#form-container" data-reveal-id="exampleModal">Buy Now</a></div>
+                </div><!-- end package -->                
+            </div><!-- end col-md-6 -->
+            <div class="col-md-6">                
+                <div class="package wow fadeInRight animated" data-wow-offset="200" data-wow-delay="600m">
                 	<h5>Merch T-Shirt</h5>
                     <ul class="list-default">
                       <img src="images/item3.png" style="width: 30%;" />
                     </ul>
                     <strong class="price"><small>€</small>15</strong>
-                </div><!-- end package -->
-                
+                    <br>
+                    <div class="tour-ticket" style="margin-left: 0px;"><a href="#form-container" data-reveal-id="exampleModal">Buy Now</a></div>
+                </div><!-- end package -->                
             </div><!-- end col-md-6 -->
-            <div class="col-md-6">                
-                <div class="package wow fadeInRight animated" data-wow-offset="200" data-wow-delay="600m">
-                	<h5>Merch Sticker</h5>
-                    <ul class="list-default">
-                      <img src="images/item2.png" style="width: 30%;" />
-                    </ul>
-                    <strong class="price"><small>€</small>1.50</strong>
-                </div><!-- end package -->
-                
-                <div class="package no-border wow fadeInRight animated" data-wow-offset="150" data-wow-delay="700m">
-                	<h5>Merch Sticker</h5>
-                    <ul class="list-default">
-                      <img src="images/item4.png" style="width: 30%;" />
-                    </ul>
-                    <strong class="price"><small>€</small>1.50</strong>
-                </div><!-- end package -->
-                
-            </div><!-- end col-md-6 -->
+            <div id="form-container">
+                <div id="exampleModal" class="reveal-modal">
+                     <div class="col-md-8 col-md-offset-2 conForm">       
+                        <form 
+                           method="POST" 
+                           action="https://script.google.com/macros/s/AKfycbyng8YK1_X3m0zlOtv-qsee-1ACaEPLn6KOGXWL6h_hqOX0aFGxhZdDGaW1zz-s8IiT/exec"
+                           >
+                          <input name="Name" id="topic" type="text" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Name..." required>
+                          <input name="Email" id="email" type="email" class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 noMarr" placeholder="Email Address..." required>
+                          <input name="PhoneNumber" id="topic" type="text" class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 noMarr" placeholder="Phone Number..." required>
+                          <!--
+                          <select name="TypeOfPayment">
+                            <option value="Payment Link">Payment Link</option>
+                            <option value="At The Show">At The Show</option>
+                          </select>
+                          -->
+                          <select name="Size" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 15px 30px;">
+                            <option value="Size">Size....</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                            <option value="X Large">X Large</option>
+                          </select>
+                          <button type="submit" id="submit" class="submitBnt">Send Order</button>
+                          <a href="#" class="close-reveal-modal">×</a>
+                          <div id="simple-msg"></div>
+                        </form>
+                      </div>
+                </div>
+            </div>
         </div><!-- end row -->    
+  </div>
   </div>
 </section>
 <!-- package section --> 
@@ -359,5 +405,10 @@ $(document).ready(function(){
 });
 //]]>
 </script>
+
+<!-- 
+Web App URL:
+https://script.google.com/macros/s/AKfycbyng8YK1_X3m0zlOtv-qsee-1ACaEPLn6KOGXWL6h_hqOX0aFGxhZdDGaW1zz-s8IiT/exec
+-->
 </body>
 </html>

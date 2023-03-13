@@ -4,25 +4,6 @@ exports.FLACDecoder = require('./src/decoder');
 require('./src/ogg');
 
 },{"./src/decoder":2,"./src/demuxer":3,"./src/ogg":4}],2:[function(require,module,exports){
-/*
- * FLAC.js - Free Lossless Audio Codec decoder in JavaScript
- * Original C version from FFmpeg (c) 2003 Alex Beregszaszi
- * JavaScript port by Devon Govett and Jens Nockert of Official.fm Labs
- * 
- * Licensed under the same terms as the original.  The original
- * license follows.
- *
- * FLAC.js is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * FLAC.js is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- */
 
 var AV = (window.AV);
 
@@ -556,21 +537,6 @@ var FLACDecoder = AV.Decoder.extend(function() {
 module.exports = FLACDecoder;
 
 },{}],3:[function(require,module,exports){
-/*
- * FLAC.js - Free Lossless Audio Codec decoder in JavaScript
- * By Devon Govett and Jens Nockert of Official.fm Labs
- *
- * FLAC.js is free software; you can redistribute it and/or
- * modify it under the terms of the GNU Lesser General Public
- * License as published by the Free Software Foundation; either
- * version 2.1 of the License, or (at your option) any later version.
- *
- * FLAC.js is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- *
- */
 
 var AV = (window.AV);
 
@@ -649,14 +615,6 @@ var FLACDemuxer = AV.Demuxer.extend(function() {
                     stream.advance(16); // skip MD5 hashes
                     this.readBlockHeaders = false;
                     break;
-
-                    /*
-                    I am only looking at the least significant 32 bits of sample number and offset data
-                    This is more than sufficient for the longest flac file I have (~50 mins 2-channel 16-bit 44.1k which uses about 7.5% of the UInt32 space for the largest offset)
-                    Can certainly be improved by storing sample numbers and offests as doubles, but would require additional overriding of the searchTimestamp and seek functions (possibly more?)
-                    Also the flac faq suggests it would be possible to find frame lengths and thus create seek points on the fly via decoding but I assume this would be slow
-                    I may look into these thigns though as my project progresses
-                    */
                     case SEEKTABLE:
                         for(var s=0; s<this.size/18; s++)
                         {
@@ -788,6 +746,3 @@ OggDemuxer.plugins.push({
 });
 
 },{}]},{},[1])
-
-
-//# sourceMappingURL=flac.js.map

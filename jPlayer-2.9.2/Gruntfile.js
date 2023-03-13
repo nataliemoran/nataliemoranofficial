@@ -117,9 +117,6 @@ module.exports = function(grunt) {
 					'!**/jquery.jplayer.inspector.js' // The inspector does not pass jshint, and this will be addressed in due course.
 				]
 			},
-
-			// jQuery linting guide http://contribute.jquery.org/style-guide/js/#linting
-			// docs http://www/jshint.com/docs/
 			options: {
 				// Using .jshintrc files for the options.
 				jshintrc: true

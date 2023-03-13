@@ -1,29 +1,4 @@
-﻿/*
- * jPlayer Plugin for jQuery JavaScript Library
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
- *
- * Author: Robert M. Hall
- * Date: 7th August 2012
- * Custom NetConnection Manager for more robust RTMP support
- * Based in part on work by Will Law for the old Akamai NCManager.as
- * and some of Will's new work in the OVP base classes (Open Video Player)
- * as well as similar approaches by many other NetConnection managers
- *
- */
- 
- /* 
- TODO LIST 08/18/2011:
- 1. Wired up errors to dispatch events to Jplayer events to allow them to bubble up to JS
- 2. Rework event dispatch to handoff netconnection instead of a passed in reference
- 3. Allow a customizeable list of protocols and ports to be used instead of entire list
- 4. Allow a specific port/protocol (1 connect type) to be used first, and then optionally fallback on a custom list or the default list
- 5. Remove some traces and check a few other items below where I've made notes
- */
-
+﻿
 package happyworm.jPlayer {
 	
 	import flash.events.*;
@@ -86,14 +61,10 @@ package happyworm.jPlayer {
 			k_startConns = getTimer();
 			m_serverName = p_serverName;
 			m_appName = p_appName;
-		
-			// Set a timeout function, just in case we never connect successfully
+
 			clearInterval(m_flashComConnectTimeOut);
 			m_flashComConnectTimeOut = setInterval(onFlashComConnectTimeOut,k_TIMEOUT,k_TIMEOUT);
-			
-			// Createe a NetConnection for each of the protocols/ports listed in the m_connList list.
-			// Connection attempts occur at intervals of 1.5 seconds. 
-			// The first connection to succeed will be used, all the others will be closed.
+
 			_aNC = new Array();
 			for (var i:uint = 0; i < m_connList.length; i++)
 			{
@@ -106,23 +77,7 @@ package happyworm.jPlayer {
 				_aNC[i].client.connIndex = i;
 				_aNC[i].client.id = i;
 				_aNC[i].client.pending = true;
-				
-				/* Revisit this chunk - not needed at the moment as NC is handed off and this 
-				// is handled elsewhere
-				// Need to put in some event dispatching as a more elegant solution and leave it here
-				
-				_aNC[i].client.onBWDone = function (p_bw, deltaDown, deltaTime, latency) {
-					//this.owner.dispatchEvent ({type:"ncBandWidth", kbps:p_bw, latency:latency});
-				};
 
-				_aNC[i].client.onBWCheck = function (counter) {
-					return ++counter;
-				};
-
-				_aNC[i].client.onStatus = function (info) {
-					//
-				};
-				*/
 				
 			}
 			m_connListCounter = 0;
@@ -164,10 +119,6 @@ package happyworm.jPlayer {
 			clearInterval(m_flashComConnectTimeOut);
 			_ncRef.connectStream();
 			_ncRef.onBWDone(null,_nc);
-			//dispatchEvent(event);
-			// Need to enable and pass to Jplayer event system- revisit
-			// right now handing back a hardcoded reference that is passed in
-			// Should come up with a more loosely coupled way via event dispatch
 
 		}
 		
@@ -181,10 +132,7 @@ package happyworm.jPlayer {
 		
 		
 		public function stopAll(bool:Boolean=false):void {
-			
-			//this.dispatchEvent ({type:"ncFailedToConnect", timeout:timeout});
-			// Need to enable and pass to Jplayer event system- revisit
-			// trace(_aNC+":"+m_flashComConnectTimeOut+":"+m_connList.length)
+
 			if(_aNC!=null && !isNaN(m_flashComConnectTimeOut) ) {
 				clearInterval(m_flashComConnectTimeOut);
 			for (var i:uint = 0; i < m_connList.length; i++)
@@ -212,10 +160,7 @@ package happyworm.jPlayer {
 				trace(event.info.description);
 			}
 			_aNC[event.target.client.id].client.pending = true;
-			
-				// this.owner.m_validNetConnection = this.client.owner[this.client.connIndex];
-				// if (info.description == "[ License.Limit.Exceeded ]") {
-
+	
 				switch (event.info.code) {
 					case "NetConnection.Connect.IdleTimeOut":
 					trace("IDLE TIMEOUT OCCURRED!")
@@ -231,15 +176,10 @@ package happyworm.jPlayer {
 					break;
 				case "NetConnection.Connect.InvalidApp":
 				case "NetConnection.Connect.Rejected":
-					//handleRejectedOrInvalid(event) 
+					
     				break;
 				case "NetConnection.Call.Failed":
-					/*
-					if (event.info.description.indexOf("_checkbw") != -1) {
-						event.target.expectBWDone = true;
-						event.target.call("checkBandwidth",null);
-					}
-					*/
+				
 					break;
 					case "NetConnection.Connect.Success":
 						var i:uint=0;
@@ -268,28 +208,18 @@ package happyworm.jPlayer {
 					break;
 				}
 		}
-						
 
-		/** Catches any netconnection net security errors
-		 * @private
-		 */
 		private function netSecurityError(event:SecurityErrorEvent):void {
 			trace("SECURITY ERROR:"+event);
-			//dispatchEvent(event);
-			// Need to enable and pass to Jplayer event system- revisit
+			
     	}
-    	
-    	/** Catches any async errors
-    	 * @private
-    	 */
+
 		private function asyncError(event:AsyncErrorEvent):void {
 			trace("ASYNC ERROR:"+event.error);
-			//dispatchEvent(event);
-			// Need to enable and pass to Jplayer event system- revisit
     	}
 		
 		
 
-	}// class
+	}
 	
-} //package
+}

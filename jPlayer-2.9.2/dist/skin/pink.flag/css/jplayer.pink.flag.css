@@ -1,29 +1,11 @@
-/*! Pink Flag Skin for jPlayer 2.9.2 ~ (c) 2009-2014 Happyworm Ltd ~ MIT License */
-
-/*
- * Skin for jPlayer Plugin (jQuery JavaScript Library)
- * http://www.jplayer.org
- *
- * Skin Name: Pink Flag
- *
- * Copyright (c) 2012 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- *  - http://www.opensource.org/licenses/mit-license.php
- *
- * Author: Silvia Benvenuti
- * Skin Version: 2.1 (jPlayer 2.8.0)
- * Date: 13th November 2014
- */
 .jp-audio *:focus,
 .jp-audio-stream *:focus,
 .jp-video *:focus {
-  /* Disable the browser focus highlighting. */
   outline: none; }
 
 .jp-audio button::-moz-focus-inner,
 .jp-audio-stream button::-moz-focus-inner,
 .jp-video button::-moz-focus-inner {
-  /* Disable the browser CSS3 focus highlighting. */
   border: 0; }
 
 .jp-audio,
@@ -54,14 +36,10 @@
   width: 640px; }
 
 .jp-video-full {
-  /* Rules for IE6 (full-screen) */
   width: 480px;
   height: 270px;
-  /* Rules for IE7 (full-screen) - Otherwise the relative container causes other page items that are not position:static (default) to appear over the video/gui. */
   position: static !important;
   position: relative; }
-
-/* The z-index rule is defined in this manner to enable Popcorn plugins that add overlays to video area. EG. Subtitles. */
 .jp-video-full div div {
   z-index: 1000; }
 
@@ -70,24 +48,21 @@
   left: 0;
   position: fixed !important;
   position: relative;
-  /* Rules for IE6 (full-screen) */
   overflow: hidden; }
 
 .jp-video-full .jp-gui {
   position: fixed !important;
   position: static;
-  /* Rules for IE6 (full-screen) */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 1001;
-  /* 1 layer above the others. */ }
+ }
 
 .jp-video-full .jp-interface {
   position: absolute !important;
   position: relative;
-  /* Rules for IE6 (full-screen) */
   bottom: 0;
   left: 0; }
 
@@ -95,9 +70,8 @@
   position: relative;
   width: 100%;
   background-color: #3a2a45;
-  /* Required for the full screen */ }
+ }
 
-/* @group CONTROLS */
 .jp-video .jp-controls-holder {
   clear: both;
   width: 440px;
@@ -129,7 +103,7 @@
   margin: 0 0 0 115px;
   float: left;
   display: inline;
-  /* need this to fix IE6 double margin */ }
+ }
 
 .jp-controls button {
   display: block;
@@ -142,7 +116,6 @@
   border: none;
   cursor: pointer; }
 
-/* @group single player controls */
 .jp-type-single .jp-controls button {
   width: 99px; }
 
@@ -158,7 +131,6 @@
 .jp-state-playing .jp-type-single .jp-play:focus {
   background: url("../image/jplayer.pink.flag.jpg") -100px -120px no-repeat; }
 
-/* The right border is normally in the ul background image. */
 .jp-audio-stream .jp-play,
 .jp-audio-stream .jp-pause {
   border-right: 1px solid #180920; }
@@ -169,8 +141,6 @@
 .jp-type-single .jp-stop:focus {
   background: url("../image/jplayer.pink.flag.jpg") -100px -80px no-repeat; }
 
-/* @end */
-/* @group playlist player controls */
 .jp-type-playlist .jp-controls button {
   width: 49px; }
 
@@ -204,8 +174,6 @@
 .jp-type-playlist .jp-next:focus {
   background: url("../image/jplayer.pink.flag.jpg") -124px -160px no-repeat; }
 
-/* @end */
-/* @group TOGGLES */
 .jp-toggles {
   padding: 0;
   margin: 0 auto;
@@ -229,7 +197,6 @@
   height: 18px;
   text-indent: -9999px;
   line-height: 100%;
-  /* need this for IE6 */
   border: none;
   cursor: pointer; }
 
@@ -275,9 +242,6 @@
 .jp-audio .jp-shuffle {
   margin-left: 5px; }
 
-/* @end */
-/* @group progress bar */
-/* The seeking class is added/removed inside jPlayer */
 div.jp-seeking-bg {
   background: url("../image/jplayer.pink.flag.seeking.gif"); }
 
@@ -309,8 +273,6 @@ div.jp-video .jp-progress {
   height: 100%;
   overflow: hidden; }
 
-/* @end */
-/* @group volume controls */
 .jp-state-no-volume .jp-volume-controls {
   display: none; }
 
@@ -398,8 +360,6 @@ div.jp-video .jp-progress {
   background: url("../image/jplayer.pink.flag.jpg") 0px -320px repeat-x;
   height: 4px; }
 
-/* @end */
-/* @group current time and duration */
 .jp-current-time, .jp-duration {
   width: 70px;
   font-size: .5em;
@@ -453,7 +413,6 @@ div.jp-video .jp-progress {
   border-bottom: 1px solid #180a1f;
   overflow: hidden; }
 
-/* Note that the first-child (IE6) and last-child (IE6/7/8) selectors do not work on IE */
 div.jp-type-playlist div.jp-playlist li:first-child {
   border-top: none;
   padding-top: 3px; }
@@ -506,11 +465,10 @@ span.jp-artist {
   font-size: .8em;
   color: #8C7A99; }
 
-/* @end */
 .jp-video .jp-video-play {
   width: 100%;
   overflow: hidden;
-  /* Important for nested negative margins to work in modern browsers */ }
+ }
 
 .jp-video-270p .jp-video-play {
   margin-top: -270px;
@@ -548,7 +506,6 @@ span.jp-artist {
 .jp-jplayer {
   background-color: #000000; }
 
-/* @group NO SOLUTION error feedback */
 .jp-no-solution {
   padding: 5px;
   font-size: .8em;
@@ -568,5 +525,4 @@ span.jp-artist {
   display: block;
   text-align: center;
   font-weight: bold; }
-
-/* @end */
+  

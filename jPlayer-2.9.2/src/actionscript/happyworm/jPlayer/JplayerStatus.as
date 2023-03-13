@@ -1,15 +1,4 @@
-﻿/*
- * jPlayer Plugin for jQuery JavaScript Library
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
- *
- * Author: Mark J Panaghiston
- * Date: 27th November 2014
- */
-
+﻿
 package happyworm.jPlayer {
 	public class JplayerStatus {
 

@@ -1,15 +1,3 @@
-/*
-jQuery grab 
-https://github.com/jussi-kalliokoski/jQuery.grab
-Ported from Jin.js::gestures   
-https://github.com/jussi-kalliokoski/jin.js/
-Created by Jussi Kalliokoski
-Licensed under MIT License. 
-
-Includes fix for IE
-*/
-
-
 (function($){
 	var	extend		= $.extend,
 		mousedown	= 'mousedown',

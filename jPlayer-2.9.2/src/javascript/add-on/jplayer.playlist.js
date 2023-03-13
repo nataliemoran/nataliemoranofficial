@@ -1,21 +1,3 @@
-/*
- * Playlist Object for the jPlayer Plugin
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/MIT
- *
- * Author: Mark J Panaghiston
- * Version: 2.4.1
- * Date: 19th November 2014
- *
- * Requires:
- *  - jQuery 1.7.0+
- *  - jPlayer 2.8.2+
- */
-
-/*global jPlayerPlaylist:true */
 
 (function($, undefined) {
 
@@ -55,11 +37,9 @@
 		}, this._options, options); // Object: The jPlayer constructor options for this playlist and the playlist options
 
 		this.playlist = []; // Array of Objects: The current playlist displayed (Un-shuffled or Shuffled)
-		this.original = []; // Array of Objects: The original playlist
+		this.original = []; 
 
-		this._initPlaylist(playlist); // Copies playlist to this.original. Then mirrors this.original to this.playlist. Creating two arrays, where the element pointers match. (Enables pointer comparison.)
-
-		// Setup the css selectors for the extra interface items used by the playlist.
+		this._initPlaylist(playlist);
 		this.cssSelector.details = this.cssSelector.cssSelectorAncestor + " .jp-details"; // Note that jPlayer controls the text in the title element.
 		this.cssSelector.playlist = this.cssSelector.cssSelectorAncestor + " .jp-playlist";
 		this.cssSelector.next = this.cssSelector.cssSelectorAncestor + " .jp-next";

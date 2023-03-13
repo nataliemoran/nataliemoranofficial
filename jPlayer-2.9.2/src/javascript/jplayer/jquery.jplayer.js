@@ -1,20 +1,3 @@
-/*
- * jPlayer Plugin for jQuery JavaScript Library
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
- *
- * Author: Mark J Panaghiston
- * Version: 2.9.2
- * Date: 14th December 2014
- */
-
-/* Support for Zepto 1.0 compiled with optional data module.
- * For AMD or NODE/CommonJS support, you will need to manually switch the related 2 lines in the code below.
- * Search terms: "jQuery Switch" and "Zepto Switch"
- */
 
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
@@ -149,35 +132,25 @@
 		}
 	);
 
-	$.jPlayer.htmlEvent = [ // These HTML events are bubbled through to the jPlayer event, without any internal action.
+	$.jPlayer.htmlEvent = [ 
 		"loadstart",
-		// "progress", // jPlayer uses internally before bubbling.
-		// "suspend", // jPlayer uses internally before bubbling.
+
 		"abort",
-		// "error", // jPlayer uses internally before bubbling.
+
 		"emptied",
 		"stalled",
-		// "play", // jPlayer uses internally before bubbling.
-		// "pause", // jPlayer uses internally before bubbling.
+
 		"loadedmetadata",
-		// "loadeddata", // jPlayer uses internally before bubbling.
-		// "waiting", // jPlayer uses internally before bubbling.
-		// "playing", // jPlayer uses internally before bubbling.
+
 		"canplay",
 		"canplaythrough"
-		// "seeking", // jPlayer uses internally before bubbling.
-		// "seeked", // jPlayer uses internally before bubbling.
-		// "timeupdate", // jPlayer uses internally before bubbling.
-		// "ended", // jPlayer uses internally before bubbling.
-		// "ratechange" // jPlayer uses internally before bubbling.
-		// "durationchange" // jPlayer uses internally before bubbling.
-		// "volumechange" // jPlayer uses internally before bubbling.
+
 	];
 
 	$.jPlayer.pause = function() {
 		$.jPlayer.prototype.destroyRemoved();
 		$.each($.jPlayer.prototype.instances, function(i, element) {
-			if(element.data("jPlayer").status.srcSet) { // Check that media is set otherwise would cause error event.
+			if(element.data("jPlayer").status.srcSet) { 
 				element.jPlayer("pause");
 			}
 		});
@@ -316,7 +289,7 @@
 			var d = document,
 				v = d.createElement('video'),
 				spec = {
-					// http://www.w3.org/TR/fullscreen/
+
 					w3c: [
 						'fullscreenEnabled',
 						'fullscreenElement',
@@ -325,7 +298,6 @@
 						'fullscreenchange',
 						'fullscreenerror'
 					],
-					// https://developer.mozilla.org/en-US/docs/DOM/Using_fullscreen_mode
 					moz: [
 						'mozFullScreenEnabled',
 						'mozFullScreenElement',
@@ -334,8 +306,6 @@
 						'mozfullscreenchange',
 						'mozfullscreenerror'
 					],
-					// http://developer.apple.com/library/safari/#documentation/WebKit/Reference/ElementClassRef/Element/Element.html
-					// http://developer.apple.com/library/safari/#documentation/UserExperience/Reference/DocumentAdditionsReference/DocumentAdditions/DocumentAdditions.html
 					webkit: [
 						'',
 						'webkitCurrentFullScreenElement',
@@ -344,9 +314,7 @@
 						'webkitfullscreenchange',
 						''
 					],
-					// http://developer.apple.com/library/safari/#documentation/AudioVideo/Reference/HTMLVideoElementClassReference/HTMLVideoElement/HTMLVideoElement.html
-					// https://developer.apple.com/library/safari/samplecode/HTML5VideoEventFlow/Listings/events_js.html#//apple_ref/doc/uid/DTS40010085-events_js-DontLinkElementID_5
-					// Events: 'webkitbeginfullscreen' and 'webkitendfullscreen'
+
 					webkitVideo: [
 						'webkitSupportsFullscreen',
 						'webkitDisplayingFullscreen',
@@ -1451,8 +1419,6 @@
 			}, false);
 			mediaElement.addEventListener("ended", function() {
 				if(entity.gate) {
-					// Order of the next few commands are important. Change the time and then pause.
-					// Solves a bug in Firefox, where issuing pause 1st causes the media to play from the start. ie., The pause is ignored.
 					if(!$.jPlayer.browser.webkit) { // Chrome crashes if you do this in conjunction with a setMedia command in an ended event handler. ie., The playlist demo.
 						self.htmlElement.media.currentTime = 0; // Safari does not care about this command. ie., It works with or without this line. (Both Safari and Chrome are Webkit.)
 					}
@@ -1500,14 +1466,8 @@
 		},
 		_addAuroraEventListeners : function(player, entity) {
 			var self = this;
-			//player.preload = this.options.preload;
-			//player.muted = this.options.muted;
 			player.volume = this.options.volume * 100;
 
-			// Create the event listeners
-			// Only want the active entity to affect jPlayer and bubble events.
-			// Using entity.gate so that object is referenced and gate property always current
-			
 			player.on("progress", function() {
 				if(entity.gate) {
 					if(self.internal.cmdsIgnored && this.readyState > 0) { // Detect iOS executed the command

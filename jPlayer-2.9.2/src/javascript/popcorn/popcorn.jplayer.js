@@ -1,21 +1,3 @@
-/*
- * jPlayer Player Plugin for Popcorn JavaScript Library
- * http://www.jplayer.org
- *
- * Copyright (c) 2012 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
- *
- * Author: Mark J Panaghiston
- * Version: 1.1.6
- * Date: 27th November 2014
- *
- * For Popcorn Version: 1.3
- * For jPlayer Version: 2.9.0
- * Requires: jQuery 1.7+
- * Note: jQuery dependancy cannot be removed since jPlayer 2 is a jQuery plugin. Use of jQuery will be kept to a minimum.
- */
-
 (function(Popcorn) {
 
 	var JQUERY_SCRIPT = '//code.jquery.com/jquery-1.11.1.min.js', // Used if jQuery not already present.

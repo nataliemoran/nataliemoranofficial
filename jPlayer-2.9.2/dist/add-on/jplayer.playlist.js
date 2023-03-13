@@ -1,22 +1,3 @@
-/*
- * Playlist Object for the jPlayer Plugin
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/MIT
- *
- * Author: Mark J Panaghiston
- * Version: 2.4.1
- * Date: 19th November 2014
- *
- * Requires:
- *  - jQuery 1.7.0+
- *  - jPlayer 2.8.2+
- */
-
-/*global jPlayerPlaylist:true */
-
 (function($, undefined) {
 
 	jPlayerPlaylist = function(cssSelector, playlist, options) {

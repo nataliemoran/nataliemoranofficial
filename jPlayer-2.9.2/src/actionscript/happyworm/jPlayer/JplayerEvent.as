@@ -1,21 +1,7 @@
-﻿/*
- * jPlayer Plugin for jQuery JavaScript Library
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
- *
- * Author: Mark J Panaghiston
- * Date: 15th December 2013
- */
-
-package happyworm.jPlayer {
+﻿package happyworm.jPlayer {
 	import flash.events.Event;
 	
 	public class JplayerEvent extends Event {
-		
-		// The event strings must match those in the JavaScript's $.jPlayer.event object
 
 		public static const JPLAYER_READY:String = "jPlayer_ready";
 		public static const JPLAYER_FLASHRESET:String = "jPlayer_flashreset"; // Handled in JavaScript

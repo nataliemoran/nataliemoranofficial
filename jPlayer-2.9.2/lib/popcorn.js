@@ -1,6 +1,5 @@
 (function(global, document) {
 
-  // Popcorn.js does not support archaic browsers
   if ( !document.addEventListener ) {
     global.Popcorn = {
       isSupported: false
@@ -26,15 +25,12 @@
   hasOwn = OP.hasOwnProperty,
   toString = OP.toString,
 
-  // Copy global Popcorn (may not exist)
   _Popcorn = global.Popcorn,
 
-  //  Ready fn cache
   readyStack = [],
   readyBound = false,
   readyFired = false,
 
-  //  Non-public internal data object
   internal = {
     events: {
       hash: {},
@@ -42,8 +38,6 @@
     }
   },
 
-  //  Non-public `requestAnimFrame`
-  //  http://paulirish.com/2011/requestanimationframe-for-smart-animating/
   requestAnimFrame = (function(){
     return global.requestAnimationFrame ||
       global.webkitRequestAnimationFrame ||
@@ -224,12 +218,6 @@
 
       //  function to fire when video is ready
       var isReady = function() {
-
-        // chrome bug: http://code.google.com/p/chromium/issues/detail?id=119598
-        // it is possible the video's time is less than 0
-        // this has the potential to call track events more than once, when they should not
-        // start: 0, end: 1 will start, end, start again, when it should just start
-        // just setting it to 0 if it is below 0 fixes this issue
         if ( self.media.currentTime < 0 ) {
 
           self.media.currentTime = 0;
@@ -348,19 +336,6 @@
         self.error = self.media.error;
       }, false );
 
-      // http://www.whatwg.org/specs/web-apps/current-work/#dom-media-readystate
-      //
-      // If media is in readyState (rS) >= 1, we know the media's duration,
-      // which is required before running the isReady function.
-      // If rS is 0, attach a listener for "loadedmetadata",
-      // ( Which indicates that the media has moved from rS 0 to 1 )
-      //
-      // This has been changed from a check for rS 2 because
-      // in certain conditions, Firefox can enter this code after dropping
-      // to rS 1 from a higher state such as 2 or 3. This caused a "loadeddata"
-      // listener to be attached to the media object, an event that had
-      // already triggered and would not trigger again. This left Popcorn with an
-      // instance that could never start a timeUpdate loop.
       if ( self.media.readyState >= 1 ) {
 
         isReady();
@@ -588,9 +563,6 @@
   //  Memoized GUID Counter
   Popcorn.guid.counter = 1;
 
-  //  Factory to implement getters, setters and controllers
-  //  as Popcorn instance methods. The IIFE will create and return
-  //  an object with defined methods
   Popcorn.extend(Popcorn.p, (function() {
 
       var methods = "load play pause currentTime playbackRate volume duration preload playbackRate " +
@@ -1118,14 +1090,10 @@
     }
   };
 
-  //  Extend Popcorn.events.fns (listen, unlisten, trigger) to all Popcorn instances
-  //  Extend aliases (on, off, emit)
   Popcorn.forEach( [ [ "trigger", "emit" ], [ "listen", "on" ], [ "unlisten", "off" ] ], function( key ) {
     Popcorn.p[ key[ 0 ] ] = Popcorn.p[ key[ 1 ] ] = Popcorn.events.fn[ key[ 0 ] ];
   });
 
-  // Internal Only - construct simple "TrackEvent"
-  // data type objects
   function TrackEvent( track ) {
     Abstract.put.call( this, track );
   }
@@ -1343,10 +1311,7 @@
       index++;
     }
 
-    // Reset length to be used by the condition below to determine
-    // if animating track events should also be filtered for removal.
-    // Reset index below to be used by the reverse while as an
-    // incrementing counter
+
     length = this.animating.length;
     index = 0;
 
@@ -1354,9 +1319,6 @@
       while ( --length > -1 ) {
         animate = this.animating[ index ];
 
-        // Padding events will not have _id properties.
-        // These should be safely pushed onto the front and back of the
-        // track event array
         if ( !animate._id ) {
           animating.push( animate );
         }
@@ -1426,13 +1388,9 @@
     if ( track && track._natives && track._natives.type &&
         ( obj.options.defaults && obj.options.defaults[ track._natives.type ] ) ) {
 
-      // To ensure that the TrackEvent Invariant Policy is enforced,
-      // First, copy the properties of the newly created track event event
-      // to a temporary holder
+
       temp = Popcorn.extend( {}, track );
 
-      // Next, copy the default onto the newly created trackevent, followed by the
-      // temporary holder.
       Popcorn.extend( track, obj.options.defaults[ track._natives.type ], temp );
     }
 
@@ -1820,25 +1778,16 @@
         return this;
       }
 
-      // When the "ranges" property is set and its value is an array, short-circuit
-      // the pluginFn definition to recall itself with an options object generated from
-      // each range object in the ranges array. (eg. { start: 15, end: 16 } )
       if ( options.ranges && Popcorn.isArray(options.ranges) ) {
         Popcorn.forEach( options.ranges, function( range ) {
-          // Create a fresh object, extend with current options
-          // and start/end range object's properties
-          // Works with in/out as well.
+
           var opts = Popcorn.extend( {}, options, range );
 
-          // Remove the ranges property to prevent infinitely
-          // entering this condition
           delete opts.ranges;
 
-          // Call the plugin with the newly created opts object
           this[ name ]( opts );
         }, this);
 
-        // Return the Popcorn instance to avoid creating an empty track event
         return this;
       }
 
@@ -1896,8 +1845,6 @@
         }));
       });
 
-      // default to an empty string if no effect exists
-      // split string into an array of effects
       options.compose = options.compose || [];
       if ( typeof options.compose === "string" ) {
         options.compose = options.compose.split( " " );
@@ -2069,16 +2016,7 @@
             this.data.trackEvents.add( trackEvent );
             TrackEvent.start( this, trackEvent );
           } else {
-            // This branch is taken when there is no explicitly defined
-            // _update method for a plugin. Which will occur either explicitly or
-            // as a result of the plugin definition being a function that _returns_
-            // a definition object.
-            //
-            // In either case, this path can ONLY be reached for TrackEvents that
-            // already exist.
 
-            // Directly update the TrackEvent instance.
-            // This supports TrackEvent invariant enforcement.
             Popcorn.extend( trackEvent, options );
 
             this.data.trackEvents.remove( id );
@@ -2214,15 +2152,10 @@
     };
   }
 
-  // Debug-mode flag for plugin development
-  // True for Popcorn development versions, false for stable/tagged versions
   Popcorn.plugin.debug = ( Popcorn.version === "@" + "VERSION" );
 
-  //  removePlugin( type ) removes all tracks of that from all instances of popcorn
-  //  removePlugin( obj, type ) removes all tracks of type from obj, where obj is a single instance of popcorn
   Popcorn.removePlugin = function( obj, name ) {
 
-    //  Check if we are removing plugin from an instance or from all of Popcorn
     if ( !name ) {
 
       //  Fix the order
@@ -2318,24 +2251,7 @@
   //  Basic DOM utilities and helpers API. See #1037
   Popcorn.dom = {
     debug: false,
-    //  Popcorn.dom.find( selector, context )
-    //
-    //  Returns the first element that matches the specified selector
-    //  Optionally provide a context element, defaults to `document`
-    //
-    //  eg.
-    //  Popcorn.dom.find("video") returns the first video element
-    //  Popcorn.dom.find("#foo") returns the first element with `id="foo"`
-    //  Popcorn.dom.find("foo") returns the first element with `id="foo"`
-    //     Note: Popcorn.dom.find("foo") is the only allowed deviation
-    //           from valid querySelector selector syntax
-    //
-    //  Popcorn.dom.find(".baz") returns the first element with `class="baz"`
-    //  Popcorn.dom.find("[preload]") returns the first element with `preload="..."`
-    //  ...
-    //  See https://developer.mozilla.org/En/DOM/Document.querySelector
-    //
-    //
+
     find: function( selector, context ) {
       var node = null;
 
@@ -2503,12 +2419,6 @@
 
         prefix = callparam[ 1 ].split( "=" )[ 1 ];
 
-        // Since we need to support developer specified callbacks
-        // and placeholders in harmony, make sure matches to "callback="
-        // aren't just placeholders.
-        // We coded ourselves into a corner here.
-        // JSONP callbacks should never have been
-        // allowed to have developer specified callbacks
         if ( prefix === "?" ) {
           prefix = "jsonp";
         }
@@ -2590,15 +2500,9 @@
   };
 
   Popcorn.util = {
-    // Simple function to parse a timestamp into seconds
-    // Acceptable formats are:
-    // HH:MM:SS.MMM
-    // HH:MM:SS;FF
-    // Hours and minutes are optional. They default to 0
+
     toSeconds: function( timeStr, framerate ) {
-      // Hours and minutes are optional
-      // Seconds must be specified
-      // Seconds can be followed by milliseconds OR by the frame information
+
       var validTimeFormat = /^([0-9]+:){0,2}[0-9]+([.;][0-9]+)?$/,
           errorMessage = "Invalid time format",
           digitPairs, lastIndex, lastPair, firstPair,

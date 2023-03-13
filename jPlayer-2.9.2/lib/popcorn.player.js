@@ -311,10 +311,6 @@
     object.__defineSetter__( description, options.set || Popcorn.nop );
   };
 
-  // player queue is to help players queue things like play and pause
-  // HTML5 video's play and pause are asynch, but do fire in sequence
-  // play() should really mean "requestPlay()" or "queuePlay()" and
-  // stash a callback that will play the media resource when it's ready to be played
   Popcorn.player.playerQueue = function() {
 
     var _queue = [],
@@ -389,10 +385,6 @@
       }
     }
 
-    // If we don't have any players or wrappers that can handle this,
-    // Default to using HTML5 video.  Similar to the HTMLVideoElement
-    // wrapper, we put a video in the div passed to us via:
-    // Popcorn.smart( div, src, options )
     var videoHTML,
         videoElement,
         videoID = Popcorn.guid( "popcorn-video-" ),
@@ -401,10 +393,7 @@
     videoHTMLContainer.style.width = "100%";
     videoHTMLContainer.style.height = "100%";
 
-    // If we only have one source, do not bother with source elements.
-    // This means we don't have the IE9 hack,
-    // and we can properly listen to error events.
-    // That way an error event can be told to backup to Flash if it fails.
+
     if ( src.length === 1 ) {
       videoElement = document.createElement( "video" );
       videoElement.id = videoID;

@@ -1,16 +1,4 @@
-﻿/*
- * jPlayer Plugin for jQuery JavaScript Library
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
- *
- * Author: Mark J Panaghiston
- * Date: 15th December 2013
- */
-
-package happyworm.jPlayer {
+﻿package happyworm.jPlayer {
 	import flash.display.Sprite;
 
 	import flash.media.Sound;

@@ -1,34 +1,3 @@
-/*
- * CirclePlayer for the jPlayer Plugin (jQuery)
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2012 Happyworm Ltd
- * Dual licensed under the MIT and GPL licenses.
- *  - http://www.opensource.org/licenses/mit-license.php
- *  - http://www.gnu.org/copyleft/gpl.html
- *
- * Version: 1.0.1 (jPlayer 2.1.0+)
- * Date: 30th May 2011
- *
- * Author: Mark J Panaghiston @thepag
- *
- * CirclePlayer prototype developed by:
- * Mark Boas @maboa
- * Silvia Benvenuti @aulentina
- * Jussi Kalliokoski @quinirill
- *
- * Inspired by :
- * Neway @imneway http://imneway.net/ http://forrst.com/posts/Untitled-CPt
- * and
- * Liam McKay @liammckay http://dribbble.com/shots/50882-Purple-Play-Pause
- *
- * Standing on the shoulders of :
- * John Resig @jresig
- * Mark Panaghiston @thepag
- * Louis-Rémi Babé @Louis_Remi
- */
-
-
 var CirclePlayer = function(jPlayerSelector, media, options) {
 	var	self = this,
 

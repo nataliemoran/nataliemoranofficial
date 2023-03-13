@@ -1,16 +1,4 @@
-﻿/*
- * jPlayer Plugin for jQuery JavaScript Library
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
- *
- * Author: Robert M. Hall
- * Date: 20th November 2014
- * Based on JplayerMp4.as with modifications for rtmp
- */
-
+﻿
 package happyworm.jPlayer
 {
 	import flash.display.Sprite;

@@ -1,20 +1,3 @@
-/*
- * jPlayerInspector Plugin for jPlayer Plugin for jQuery JavaScript Library
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/MIT
- *
- * Author: Mark J Panaghiston
- * Version: 1.0.5
- * Date: 1st April 2014
- *
- * For use with jPlayer Version: 2.6.0+
- *
- * Note: Declare inspector instances after jPlayer instances. ie., Otherwise the jPlayer instance is nonsense.
- */
-
 (function($, undefined) {
 	$.jPlayerInspector = {};
 	$.jPlayerInspector.i = 0;

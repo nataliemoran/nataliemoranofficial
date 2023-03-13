@@ -1,24 +1,3 @@
-/*
- * jPlayer Plugin for jQuery JavaScript Library
- * http://www.jplayer.org
- *
- * Copyright (c) 2009 - 2014 Happyworm Ltd
- * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
- *
- * Author: Mark J Panaghiston
- * Version: 2.8.0
- * Date: 11th November 2014
- *
- * FlashVars expected: (AS3 property of: loaderInfo.parameters)
- *	id: 	(URL Encoded: String) Id of jPlayer instance
- *	vol:	(Number) Sets the initial volume
- *	muted:	(Boolean in a String) Sets the initial muted state
- *	jQuery:	(URL Encoded: String) Sets the jQuery var name. Used with: someVar = jQuery.noConflict(true); The someVar name must contain jQuery in it.
- *
- * Compiled using: Adobe Flex Compiler (mxmlc) Version 4.6
- *  mxmlc Jplayer.as -static-link-runtime-shared-libraries=true
- */
 
 package {
 	import flash.system.Security;
@@ -112,11 +91,6 @@ package {
 
 				switchType("mp3"); // set default state to mp3
 			}
-
-			// The ContextMenu only partially works. The menu select events never occur.
-			// Investigated and it is something to do with the way jPlayer inserts the Flash on the page.
-			// A simple test inserting the Jplayer.swf on a page using: 1) SWFObject 2.2 works. 2) AC_FL_RunContent() works.
-			// jPlayer Flash insertion is based on SWFObject 2.2 and the resaon behind this failure is not clear. The Flash insertion HTML on the page looks similar.
 			var myContextMenu:ContextMenu = new ContextMenu();
 			myContextMenu.hideBuiltInItems();
 			var menuItem_jPlayer:ContextMenuItem = new ContextMenuItem("jPlayer " + JplayerStatus.VERSION);
@@ -156,8 +130,6 @@ package {
 				}
 			}
 
-			// Known Flash problem with contextMenu over video player.
-			// Add a transparent rectangle into the sprite.
 			contextMenuFix.graphics.beginFill(0x000000, 0); // Transparent black
 			contextMenuFix.graphics.drawRect(0, 0, 10, 10); // Arbitary rectangle
 			contextMenuFix.graphics.endFill();
