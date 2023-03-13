@@ -238,7 +238,7 @@
                     </ul>
                     <strong class="price"><small>€</small>15</strong>
                     <br>
-                    <div class="tour-ticket" style="margin-left: 0px;"><a href="#form-container" data-reveal-id="exampleModal" onclick="showPaymentForm()">Buy Now</a></div>
+                    <div class="tour-ticket" style="margin-left: 0px;"><a href="#form-container" data-reveal-id="exampleModal">Buy Now</a></div>
                 </div><!-- end package -->                
             </div><!-- end col-md-6 -->
             <div id="form-container">
@@ -407,10 +407,6 @@ $(document).ready(function(){
 });
 //]]>
 
-function showPaymentForm(){
-  document.getElementById("form-container").style.visibility = "visible";
-}
-
 window.addEventListener("load", function() {
   const form = document.getElementById('my-form');
   form.addEventListener("submit", function(e) {
@@ -423,7 +419,7 @@ window.addEventListener("load", function() {
     })
     .then(() => {
       alert("Thank you for ordering!");
-      document.getElementById("form-container").style.visibility = "hidden";
+      window.location.replace("https://nataliemoran.github.io/nataliemoranofficial");
     })
   });
 });
