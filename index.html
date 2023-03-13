@@ -224,8 +224,10 @@
                     	<img src="images/item1.jpg" style="width: 30%;" />
                     </ul>
                     <strong class="price"><small></small>On Request</strong>
+                    <!--
                     <br>
                     <div class="tour-ticket" style="margin-left: 0px;"><a href="#form-container" data-reveal-id="exampleModal">Buy Now</a></div>
+                  -->
                 </div><!-- end package -->                
             </div><!-- end col-md-6 -->
             <div class="col-md-6">                
@@ -236,15 +238,15 @@
                     </ul>
                     <strong class="price"><small>€</small>15</strong>
                     <br>
-                    <div class="tour-ticket" style="margin-left: 0px;"><a href="#form-container" data-reveal-id="exampleModal">Buy Now</a></div>
+                    <div class="tour-ticket" style="margin-left: 0px;"><a href="#form-container" data-reveal-id="exampleModal" onclick="showPaymentForm()">Buy Now</a></div>
                 </div><!-- end package -->                
             </div><!-- end col-md-6 -->
             <div id="form-container">
                 <div id="exampleModal" class="reveal-modal">
                      <div class="col-md-8 col-md-offset-2 conForm">       
-                        <form 
+                        <form id= "my-form"
                            method="POST" 
-                           action="https://script.google.com/macros/s/AKfycbyng8YK1_X3m0zlOtv-qsee-1ACaEPLn6KOGXWL6h_hqOX0aFGxhZdDGaW1zz-s8IiT/exec"
+                           action="https://script.google.com/macros/s/AKfycbxyY-2XyTWMoNG7pkKbNixzT8WYP9kClKH4PyYM5vrMBWYxfiyZ9PvwiNCxWHIj102s/exec"
                            >
                           <input name="Name" id="topic" type="text" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" placeholder="Name..." required>
                           <input name="Email" id="email" type="email" class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 noMarr" placeholder="Email Address..." required>
@@ -404,6 +406,28 @@ $(document).ready(function(){
 	});
 });
 //]]>
+
+function showPaymentForm(){
+  document.getElementById("form-container").style.visibility = "visible";
+}
+
+window.addEventListener("load", function() {
+  const form = document.getElementById('my-form');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = e.target.action;
+    fetch(action, {
+      method: 'POST',
+      body: data,
+    })
+    .then(() => {
+      alert("Thank you for ordering!");
+      document.getElementById("form-container").style.visibility = "hidden";
+    })
+  });
+});
+
 </script>
 
 <!-- 
